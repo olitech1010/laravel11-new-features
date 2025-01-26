@@ -8,9 +8,7 @@
         </p>
 
 
-        <x-button class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">
-            Click me
-        </x-button>
+        <x-button>Click me</x-button>
 
 </x-layout>
 
