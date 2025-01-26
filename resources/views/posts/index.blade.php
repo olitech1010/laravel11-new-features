@@ -1,5 +1,7 @@
 <x-layout>
 
+        @auth
+
         <h1 class="text-4xl">
             Hello to {{env('APP_NAME')}}
         </h1>
@@ -9,6 +11,12 @@
 
 
         <x-button>Click me</x-button>
+        @endauth
+
+        @guest
+        <h1 class="text-4xl">
+            Hello to {{env('APP_NAME')}}
+        @endguest
 
 </x-layout>
 

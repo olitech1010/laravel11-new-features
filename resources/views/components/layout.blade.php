@@ -12,7 +12,7 @@
 <body class="bg-slate-100 text-slate-900">
    <header>
     <nav class="flex justify-between items-center py-4 px-8 bg-slate-900 text-white">
-        <a class="" href="">Home</a>
+        <a class="" href={{route('home')}}>Home</a>
         <div class="flex items-center gap-4">
             <a href={{route('login')}}>login</a>
             <a href={{route('register')}}>register</a>
