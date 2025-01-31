@@ -1,14 +1,6 @@
 <x-layout>
 
-        @auth
-
-
-        @endauth
-
-        @guest
-        <h1 class="text-4xl">
-            Hello to {{env('APP_NAME')}}
-        @endguest
+    <h1 class="title text-left">Latest Posts</h1>
 
 </x-layout>
 

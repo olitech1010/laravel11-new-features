@@ -15,7 +15,7 @@
 <body class="bg-slate-100 text-slate-900">
    <header>
     <nav class="">
-        <a class="text-white" href={{route('home')}}>Home</a>
+        <a class="text-white" href={{route('posts.index')}}>Home</a>
         @auth
 
         <div x-data="{open:false}" class="relative place-items-center">
