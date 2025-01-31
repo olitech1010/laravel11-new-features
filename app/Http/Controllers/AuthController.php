@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,21 +19,40 @@ class AuthController extends Controller
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
-
-
-
         // Create a new user
         $user = User::create($fields);
-
-        // Log the user in
-        Auth::login($user);
-
         // Redirect the user
-        return redirect()->route('home');
-
-        // Return a response
-        return response()->json(['message' => 'User created successfully'], 201);
-
+        return redirect()->route('login');
 
     }
+
+    // LOGIN USER
+    public function login(Request $request){
+        //validate login credetials
+        $fields = $request->validate([
+            'email' => ['required', 'max:255', 'email'],
+            'password' => ['required']
+        ]);
+        // Attempt to log the user in
+        if(Auth::attempt($fields, $request->remember)){
+            // Redirect the user
+            return redirect()->intended('/dashboard');
+        }  else {
+            return back()->withErrors(['login_failed' => 'The provided credentials do not match our records']);
+        }
+
+    }
+
+    // LOGOUT USER
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
+    }
+
+
+
+
+
 }
